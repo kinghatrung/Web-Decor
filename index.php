@@ -33,6 +33,15 @@ switch ($task) {
 	case 'pageHome':
 		$controller->getPageHome();
 		break;
+	case 'pagePhongLamViec':
+		$controller->getPhongLamViec();
+		break;
+	case 'pagePhongKhach':
+		$controller->getPhongKhach();
+		break;
+	case 'pagePhongNgu':
+		$controller->getPhongNgu();
+		break;
 	case 'pageLogin':
 		$controller->getPageLogin();
 		break;

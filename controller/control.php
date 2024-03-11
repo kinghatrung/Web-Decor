@@ -11,17 +11,24 @@
 		public function getPageHome(){
 			$this->view->getPageHome();
 		}
+		public function getPhongLamViec(){
+			$this->view->getPhongLamViec();
+		}
+		public function getPhongKhach(){
+			$this->view->getPhongKhach();
+		}
+		public function getPhongNgu(){
+			$this->view->getPhongNgu();
+		}
 		public function getPageLogin(){
 			$this->view->getPageLogin();
 		}
 		public function getPageRegister(){
 			$this->view->getPageRegister();
 		}
-
         public function getPageAdmin(){
 			require_once "./admin.php";
 		}
-
         public function getPageUser(){
            // $listUser = $this->model->getDataUser();
             $this->view->getPageUser();
@@ -34,15 +41,14 @@
 			if(isset($tam['pass'])) $_SESSION['pass'] = $tam['pass'];
 			//if(isset($tam['repassword'])) $_SESSION['repassword'] = $tam['repassword'];
 			if(isset($tam['level'])) $_SESSION['level'] = $tam['level'];
-            if($_SESSION['level'] == 1){
+            if($tam['level'] == 1){
 				header("location:index.php?task=pageAdmin");
-            }elseif($_SESSION['level'] == 2){
+            }elseif($tam['level'] == 2){
 				header("location:index.php?task=pageUser");
 			}
 			else{
-				$message = "Sai thông tin! Vui lòng thử lại.";
-            	echo '<script type="text/javascript">alert($message);</script>';
-                header("location:index.php?task=pagelogin");
+            	echo '<script type="text/javascript">alert("Sai tài khoản hoặc mật khẩu! Vui lòng thử lại.");</script>';
+                header("location:index.php?task=pageLogin");
             }
         }
 
@@ -56,7 +62,7 @@
 		public function setRegister(){
 
 			if($_POST['password'] != $_POST['repassword']){
-				echo '<script tpye=text/javascript>alert("Nhập lại mật khẩu không đúng. nhập lại");</script>';
+				echo '<script type=text/javascript>alert("Nhập lại mật khẩu không đúng. nhập lại");</script>';
 				header("location:index.php?task=pageSign-in");
 			}else{
 				$name = empty($_POST['firstname']) ? 'true' : null;
