@@ -40,7 +40,7 @@
                     <div class="user-icon-box">
                         <a class="user-icon"><i class="ti-user"></i></a>
                         <ul class="login-sign">
-                            <li><a href="index.php?task=pageHome">
+                            <li><a href="index.php?task=pageLogin">
                                 <form action="" method="post">
                                     <input class="user-logout" type="button" name="logout" value="Đăng xuất">
                                 </form>
@@ -124,7 +124,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="" method="POST">
+                    <form action="" method="post" enctype="multipart/form-data">
                         <label for="" class="modal-label">
                             Mã mẫu Decor
                         </label>
@@ -133,7 +133,7 @@
                         <label for="" class="modal-label">
                             Chọn ảnh
                         </label>
-                        <input name="anhSP" type="file" class="modal-file" accept="" onchange="">
+                        <input name="anhSP" type="file" class="modal-file">
 
                         <label for="" class="modal-label">
                             Giá mẫu
@@ -179,23 +179,22 @@
     
                 <div class="modal-body">
                     <div class="box-fix">
-                        <form action="" method="">
+                        <form action="./admin.php" method="post" enctype="multipart/form-data">
                             <label for="" class="modal-label">
                                 Mã mẫu Decor
                             </label>
-                            <input type="text" class="modal-input" placeholder="Điền Mã Mẫu Sửa">
+                            <input type="text" name="maSP" class="modal-input" placeholder="Điền Mã Mẫu Sửa">
     
-                            <label for="" class="modal-label">
+                            <label for="" class="modal-label" >
                                 Chọn ảnh
                             </label>
-                            <input type="file" class="modal-file" accept="" onchange="">
+                            <input type="file" class="modal-file" name="anhSP">
 
                             <label for="" class="modal-label">
                                 Giá mẫu
                             </label>
-                            <input type="text" class="modal-input" placeholder="Điền Giá Mẫu Sửa">
-    
-                            <input name="add" type="submit" class="fix-input" value="Sửa mẫu">
+                            <input type="text" class="modal-input" placeholder="Điền Giá Mẫu Sửa" name="giaSP">
+                            <input name="update" type="submit" class="fix-input" value="Sửa mẫu">
                         </form>
                     </div>
                 </div>
@@ -282,3 +281,4 @@
         </script>
     </body>
 </html>
+

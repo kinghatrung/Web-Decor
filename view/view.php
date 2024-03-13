@@ -3,15 +3,6 @@
         public function getPageHome(){
             include_once 'Templates/index.html';
         }
-        public function getPhongLamViec(){
-            include_once 'Templates/phonglamviec.html';
-        }
-        public function getPhongKhach(){
-            include_once 'Templates/phongkhach.html';
-        }
-        public function getPhongNgu(){
-            include_once 'Templates/phongngu.html';
-        }
         public function getPageLogin(){
             include_once 'Templates/login.html';
         }
@@ -24,6 +15,10 @@
 
         public function getPageAdmin(){
             include_once 'Templates/admin.html';
+        }
+
+        public function getPageForgot(){
+            include_once 'Templates/fotgot_pass.html';
         }
     }
 ?>

@@ -11,24 +11,20 @@
 		public function getPageHome(){
 			$this->view->getPageHome();
 		}
-		public function getPhongLamViec(){
-			$this->view->getPhongLamViec();
-		}
-		public function getPhongKhach(){
-			$this->view->getPhongKhach();
-		}
-		public function getPhongNgu(){
-			$this->view->getPhongNgu();
-		}
 		public function getPageLogin(){
 			$this->view->getPageLogin();
 		}
 		public function getPageRegister(){
 			$this->view->getPageRegister();
 		}
+
         public function getPageAdmin(){
 			require_once "./admin.php";
 		}
+		public function getPageForgot(){
+			$this->view->getPageForgot();
+		}
+
         public function getPageUser(){
            // $listUser = $this->model->getDataUser();
             $this->view->getPageUser();
@@ -36,20 +32,23 @@
 
         public function doLogin(){
             $tam = $this->model->doLogin();
-			//if(isset($tam['name'])) $_SESSION['name'] = $tam['name'];
-			if(isset($tam['email'])) $_SESSION['email'] = $tam['email'];
-			if(isset($tam['pass'])) $_SESSION['pass'] = $tam['pass'];
+			isset($tam['name'])? $_SESSION['name'] = $tam['name']: $tam['name'] = null;
+			isset($tam['email'])? $_SESSION['email'] = $tam['email']: $tam['email'] = null;
+			isset($tam['pass'])? $_SESSION['pass'] = $tam['pass']: $tam['pass'] = null;
 			//if(isset($tam['repassword'])) $_SESSION['repassword'] = $tam['repassword'];
-			if(isset($tam['level'])) $_SESSION['level'] = $tam['level'];
+			isset($tam['level'])? $_SESSION['level'] = $tam['level']: $tam['level'] = null;
             if($tam['level'] == 1){
-				header("location:index.php?task=pageAdmin");
-            }elseif($tam['level'] == 2){
-				header("location:index.php?task=pageUser");
+				$_SESSION['task'] = "pageAdmin";
+				echo '<script>alert("Chào '.$_SESSION['name'].'")</script>';
+            }else if($tam['level'] == 2){
+				$_SESSION['task'] = "pageUser";
+				echo '<script>alert("Chào '.$_SESSION['name'].'")</script>';
 			}
 			else{
-            	echo '<script type="text/javascript">alert("Sai tài khoản hoặc mật khẩu! Vui lòng thử lại.");</script>';
-                header("location:index.php?task=pageLogin");
+				$_SESSION['task'] = 'pageLogin';
+				echo '<script>alert("Sai tên đăng nhập hoặc mật khẩu!")</script>';
             }
+			require_once "index.php";
         }
 
 		// public function checkUser(){

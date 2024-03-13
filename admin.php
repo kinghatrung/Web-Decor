@@ -3,9 +3,10 @@ require_once('./controller/admin.php');
 $acontroller = new AdminController();
 $task = isset($_GET['task']) ? $_GET['task'] : 'pageAdmin';
 
-if(isset($_POST['add'])){
-		$acontroller->addSP();
-	}
+// isset($_SESSION['task'])?$task = $_SESSION['task']:null;
+
+if(isset($_POST['add'])) $acontroller->addSP();
+if(isset($_POST['update'])) $acontroller->updateSP();
 
 switch ($task) {
 	case 'pageHome':
@@ -30,5 +31,5 @@ switch ($task) {
 		$acontroller->getPageAdmin();
 		break;
 }
-
+// if(isset($_SESSION['task']))unset($_SESSION['task']);
 ?>
